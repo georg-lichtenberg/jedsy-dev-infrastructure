@@ -2,7 +2,7 @@
 
 ## 🚀 Current Tasks
 
-- [ ] **nebula-healthcheck-service**: Verify ping status fix on staging server
+- [x] **nebula-healthcheck-service**: Verify ping status fix on staging server - ERFOLGREICH: Testdrohne M24-12 zeigt "online"
 - [ ] **vpn-dashboard**: Test mit schnellerer /status API
 - [ ] **nebula-healthcheck-service**: Versionsinformationen im Pulumi/GitHub Actions Build-Prozess korrigieren (später)
 
@@ -29,6 +29,7 @@
 - [x] Migrated all documentation to English
 - [x] Analyzed IAC repository and documented deployment workflow
 - [x] Fixed ping status bug in nebula-healthcheck-service
+- [x] Verified ping fix is working - testdrohne M24-12 zeigt jetzt "online" Status (IP 172.20.0.7/32)
 
 ## 📊 Service Status
 
