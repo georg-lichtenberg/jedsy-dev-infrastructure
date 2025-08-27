@@ -3,13 +3,15 @@
 ## 🚀 Current Tasks
 
 - [ ] **nebula-healthcheck-service**: Verify ping status fix on staging server
-- [ ] **nebula-healthcheck-service**: Correct build with version information
-- [ ] Review build pipeline for proper passing of LDFLAGS
+- [ ] **nebula-healthcheck-service**: Correct build with version information - identifiziertes Problem im Dockerfile
+- [ ] Update Dockerfile to use Makefile or include LDFLAGS directly
 
 ## 📝 Recent Changes
 
 ### August 27, 2025
 
+- Analyzed build process for version information issues - identified problem in Dockerfile
+- Created version_fix_guide.md with detailed analysis and solution
 - Implemented fix for ping status bug (strip CIDR notation, increase timeout and reliability)
 - Analyzed healthcheck service ping functionality - bug found in status reporting
 - Analyzed IAC repository for deployment workflow and environment configurations
@@ -70,3 +72,9 @@
 - Review and fix build process for nebula-healthcheck-service
 - Ensure version, git commit, and build time are correctly set during build
 - Check CI/CD pipeline for correct passing of build flags
+
+## 🔄 Deployment Notes
+
+- For `nebula-vpn-pki` and `nebula-healthcheck-service`, the complete CI/CD pipeline must run before changes can be tested on staging
+- Deployment confirmation can be verified via GitHub Actions status
+- Wait for pipeline completion before attempting to verify changes on staging environments
