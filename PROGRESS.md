@@ -3,15 +3,17 @@
 ## 🚀 Current Tasks
 
 - [ ] **nebula-healthcheck-service**: Verify ping status fix on staging server
-- [ ] **nebula-healthcheck-service**: Correct build with version information - identifiziertes Problem im Dockerfile
-- [ ] Update Dockerfile to use Makefile or include LDFLAGS directly
+- [ ] **vpn-dashboard**: Test mit schnellerer /status API
+- [ ] **nebula-healthcheck-service**: Versionsinformationen im Pulumi/GitHub Actions Build-Prozess korrigieren (später)
 
 ## 📝 Recent Changes
 
 ### August 27, 2025
 
-- Analyzed build process for version information issues - identified problem in Dockerfile
-- Created version_fix_guide.md with detailed analysis and solution
+- Notiert, dass für eine korrekte Version-Fix-Implementierung der GitHub Actions Build-Prozess untersucht werden muss
+- Korrigierte Annahme über Deployment-Prozess (Pulumi statt Docker)
+- Analyzed build process for version information issues
+- Created version_fix_guide.md with updated information
 - Implemented fix for ping status bug (strip CIDR notation, increase timeout and reliability)
 - Analyzed healthcheck service ping functionality - bug found in status reporting
 - Analyzed IAC repository for deployment workflow and environment configurations
