@@ -1,0 +1,76 @@
+{
+    "folders": [
+        {
+            "name": "🚀 VPN Dashboard",
+            "path": "./vpn-dashboard"
+        },
+        {
+            "name": "🏗️ Infrastructure",
+            "path": "./iac"
+        },
+        {
+            "name": "📊 Monitor Service",
+            "path": "./monitor-service"
+        },
+        {
+            "name": "🛡️ VPN PKI",
+            "path": "./nebula-vpn-pki"
+        },
+        {
+            "name": "❤️ Healthcheck",
+            "path": "./nebula-healthcheck-service"
+        }
+    ],
+    "settings": {
+        // TypeScript Performance - Hintergrundverarbeitung stoppen
+        "typescript.disableAutomaticTypeAcquisition": true,
+        "typescript.validate.enable": false,
+        "typescript.suggest.enabled": false,
+        "typescript.workspaceSymbols.enabled": false,
+        "typescript.tsc.autoDetect": "off",
+        "typescript.npm": "off",
+
+        // Nur beim Speichern formatieren
+        "editor.formatOnType": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": true,
+
+        // Exclude Verzeichnisse für bessere Performance
+        "files.exclude": {
+            "**/node_modules": true,
+            "**/dist": true,
+            "**/build": true,
+            "**/.next": true,
+            "**/coverage": true
+        },
+
+        // Watcher Performance
+        "files.watcherExclude": {
+            "**/node_modules/**": true,
+            "**/dist/**": true,
+            "**/build/**": true,
+            "**/.git/objects/**": true
+        },
+
+        // TypeScript spezifisch
+        "[typescript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.organizeImports": "never",
+                "source.fixAll": "never"
+            }
+        },
+        "makefile.configureOnOpen": false
+    },
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "ms-python.python",
+            "ms-python.black-formatter"
+        ],
+        "unwantedRecommendations": [
+            "ms-vscode.vscode-typescript-next"
+        ]
+    }
+}
