@@ -1,24 +1,28 @@
 {
     "folders": [
         {
+            "name": "🔧 Dev Infrastructure",
+            "path": "../../jedsy-dev-infrastructure"
+        },
+        {
             "name": "🚀 VPN Dashboard",
-            "path": "./vpn-dashboard"
+            "path": "../../vpn-dashboard"
         },
         {
             "name": "🏗️ Infrastructure",
-            "path": "./iac"
+            "path": "../../iac"
         },
         {
             "name": "📊 Monitor Service",
-            "path": "./monitor-service"
+            "path": "../../monitor-service"
         },
         {
             "name": "🛡️ VPN PKI",
-            "path": "./nebula-vpn-pki"
+            "path": "../../nebula-vpn-pki"
         },
         {
-            "name": "❤️ Healthcheck",
-            "path": "./nebula-healthcheck-service"
+            "name": "❤️  Healthcheck",
+            "path": "../../nebula-healthcheck-service"
         }
     ],
     "settings": {

@@ -81,3 +81,7 @@
 - For `nebula-vpn-pki` and `nebula-healthcheck-service`, the complete CI/CD pipeline must run before changes can be tested on staging
 - Deployment confirmation can be verified via GitHub Actions status
 - Wait for pipeline completion before attempting to verify changes on staging environments
+- Local testing:
+  - VPN Dashboard kann mit `npm run dev` lokal getestet werden
+  - Monitor Service kann ebenfalls lokal getestet werden
+  - PKI und Healthcheck-Service werden über CI/CD auf das Staging-System deployt

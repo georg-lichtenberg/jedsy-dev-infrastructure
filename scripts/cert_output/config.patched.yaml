@@ -1,0 +1,70 @@
+pki:
+  cert: "/usr/local/etc/nebula/nebula.crt"
+  key: "/usr/local/etc/nebula/nebula.key"
+  ca: "/usr/local/etc/nebula/ca.crt"
+
+static_host_map:
+  "172.20.0.1": ["3.120.108.27:4242"]
+
+lighthouse:
+  am_lighthouse: false
+  interval: 60
+  hosts:
+    - "172.20.0.1"
+
+listen:
+  host: 0.0.0.0
+  port: 4242
+
+punchy:
+  punch: true
+  delay: 1s
+  respond: true
+  respond_delay: 5s
+
+relay:
+  relays:
+    - "172.20.0.1"
+  am_relay: false
+  use_relays: true
+
+tun:
+  disabled: false
+  dev: nebula1
+  drop_local_broadcast: false
+  drop_multicast: false
+  tx_queue: 500
+  mtu: 1300
+ 
+logging:
+  level: info
+  format: text
+  path: "nebula.log"
+
+firewall:
+  outbound_action: drop
+  inbound_action: drop
+
+  conntrack:
+    tcp_timeout: 12m
+    udp_timeout: 3m
+    default_timeout: 10m
+
+  outbound:
+    # Allow all outbound traffic from this node
+    - port: any
+      proto: any
+      host: any
+
+  inbound:
+    - port: any
+      proto: icmp
+      host: any
+
+    - port: any
+      proto: tcp
+      host: any
+
+    - port: any
+      proto: udp
+      host: any

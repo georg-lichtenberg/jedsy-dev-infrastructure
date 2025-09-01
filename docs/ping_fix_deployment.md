@@ -5,11 +5,13 @@
 The nebula-healthcheck-service has been updated with the following changes to fix the ping status bug:
 
 1. **CIDR Notation Handling**: Modified the `pingTarget` function to strip CIDR notation from IP addresses before attempting to ping
+
    ```go
    cleanIP := strings.Split(ip, "/")[0]
    ```
 
-2. **Increased Reliability**: 
+2. **Increased Reliability**:
+
    - Changed ping count from 1 to 3 attempts
    - Extended timeout from 3 to 5 seconds
 
@@ -23,14 +25,18 @@ The nebula-healthcheck-service has been updated with the following changes to fi
 
 ## Verification Steps
 
+**Important**: The complete CI/CD pipeline must run before changes can be tested on staging. Wait for GitHub Actions to show successful deployment before proceeding with verification.
+
 To verify the fix on the staging server, perform the following steps:
 
 1. Monitor the status of the test drone (M24-12) via API:
+
    ```bash
    curl -s "https://ping.uphi.cc/status/enhanced?device_name=M24-12" | jq '.'
    ```
 
 2. Expected outcome:
+
    - Connection status should change from "offline" to "online"
    - Consecutive failures should reset to 0
    - Last ping ms should be populated with a valid value
@@ -45,6 +51,7 @@ To verify the fix on the staging server, perform the following steps:
 If issues are encountered, roll back to the previous version:
 
 1. Revert the commit:
+
    ```bash
    git revert c29abd0
    git push origin feature/device-identification-system

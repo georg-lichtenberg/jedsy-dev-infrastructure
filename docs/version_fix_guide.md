@@ -5,6 +5,7 @@
 Nach Untersuchung der Build-Konfigurationen wurde das folgende Problem identifiziert:
 
 1. Der Healthcheck-Service enthält korrekte LDFLAGS-Definitionen im Makefile:
+
    ```makefile
    # Version information
    VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")

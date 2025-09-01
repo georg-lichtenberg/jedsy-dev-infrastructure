@@ -55,6 +55,14 @@ This document serves as a central reference for coding conventions, development 
 - Document API endpoints
 - Include health check endpoints
 
+## Testing Principles
+
+- Never use mockups or mock services for testing
+- Always test against real services when possible
+- Never use artificial naming conventions (old, new, better, etc.)
+- Git history is the source of truth for all changes
+- Use Keycloak for authentication in test environments
+
 ## Deployment & Infrastructure
 
 - Infrastructure defined as code using Pulumi (TypeScript)
@@ -62,10 +70,15 @@ This document serves as a central reference for coding conventions, development 
 - Complete CI/CD pipeline must run before testing changes on staging for PKI and healthcheck services
 - Staging environment is referenced as "dev" in the infrastructure code
 - Production deployments require approval
+- Local testing:
+  - VPN Dashboard: Test locally with `npm run dev`
+  - Monitor Service: Test locally with appropriate commands
+  - PKI and Healthcheck services: Changes must be deployed via CI/CD to the staging system for testing
 
 ## Commit Message Format
 
 Format:
+
 ```
 <type>(<scope>): <subject>
 
@@ -73,6 +86,7 @@ Format:
 ```
 
 Types:
+
 - feat: New feature
 - fix: Bug fix
 - docs: Documentation changes
@@ -82,6 +96,7 @@ Types:
 - chore: Build process changes
 
 Example:
+
 ```
 fix(healthcheck): Fix ping status bug for drones with CIDR notation
 
@@ -104,6 +119,34 @@ fix(healthcheck): Fix ping status bug for drones with CIDR notation
 - Set appropriate timeouts for external service calls
 - Use token-based authentication between services
 
+## Development Workflow
+
+- Before executing any command, always change to the correct project directory:
+  - VPN Dashboard: `/Users/georg/projects/jedsy/vpn-dashboard`
+  - PKI: `/Users/georg/projects/jedsy/nebula-vpn-pki`
+  - Healthcheck: `/Users/georg/projects/jedsy/nebula-healthcheck-service`
+  - Infrastructure: `/Users/georg/projects/jedsy/jedsy-dev-infrastructure`
+  - Monitor Service: `/Users/georg/projects/jedsy/monitor-service`
+- Use provided Makefiles for standard operations when available
+- Follow project-specific README instructions for setup and development
+- For local development of services:
+  - Use separate terminals for running services and testing (e.g., one terminal for server, another for API tests)
+  - For GUI testing, URLs will be provided but browser must be started manually
+  - Default local development ports: Frontend (5173), Backend (3001)
+- Never run untrusted code or commands
+
+## Deployment & Infrastructure
+
+- Infrastructure defined as code using Pulumi (TypeScript)
+- CI/CD managed via GitHub Actions
+- Complete CI/CD pipeline must run before testing changes on staging for PKI and healthcheck services
+- Staging environment is referenced as "dev" in the infrastructure code
+- Production deployments require approval
+- Local testing:
+  - VPN Dashboard: Test locally with `npm run dev`
+  - Monitor Service: Test locally with appropriate commands
+  - PKI and Healthcheck services: Changes must be deployed via CI/CD to the staging system for testing
+
 ## Error Prevention Checklist
 
 - Check Git status before starting work
@@ -115,6 +158,7 @@ fix(healthcheck): Fix ping status bug for drones with CIDR notation
 ## Additional Resources
 
 Each project may contain more specific conventions in their respective repositories:
+
 - nebula-healthcheck-service/BUILD.md
 - vpn-dashboard/DEVELOPMENT_CONVENTIONS.md
 - monitor-service/docs/development/DEVELOPMENT_CONVENTIONS.md
