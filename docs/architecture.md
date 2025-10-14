@@ -4,18 +4,24 @@
 
 The Jedsy VPN Monitoring System consists of several interconnected services that work together to provide comprehensive monitoring of VPN endpoints, with a particular focus on drone connectivity.
 
-```
-┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│  VPN Dashboard  │◄────►│    Healthcheck  │◄────►│    VPN PKI      │
-│  (Frontend)     │      │    Service      │      │  (Certificates) │
-└─────────────────┘      └─────────────────┘      └─────────────────┘
-                                 ▲
-                                 │
-                                 ▼
-                         ┌─────────────────┐
-                         │  Monitor Service│
-                         │  (Telemetry)    │
-                         └─────────────────┘
+```mermaid
+graph TB
+    D[Drone/Jetson/Pixhawk] -->|syslog:514| HS[Healthcheck Service<br/>Port 5514]
+    HS -->|HTTP Polling| MS[Monitor Service<br/>Telemetry Collection]
+    MS -->|Metrics| G[Grafana/Prometheus<br/>Visualization]
+    
+    VD[VPN Dashboard<br/>Frontend] -->|API Calls| HS
+    VD -->|API Calls| MS
+    
+    PKI[VPN PKI<br/>Certificates] -->|Certificate Mgmt| HS
+    PKI -->|Certificate Mgmt| VD
+    
+    style D fill:#e1f5fe
+    style HS fill:#f3e5f5
+    style MS fill:#e8f5e8
+    style G fill:#fff3e0
+    style VD fill:#fce4ec
+    style PKI fill:#f1f8e9
 ```
 
 ## Component Responsibilities
@@ -32,13 +38,28 @@ The Jedsy VPN Monitoring System consists of several interconnected services that
 
 ### Healthcheck Service
 
-- **Purpose**: Backend service for monitoring VPN endpoint connectivity
-- **Technology**: Go, PostgreSQL
+- **Purpose**: Backend service for monitoring VPN endpoint connectivity and processing drone telemetry
+- **Technology**: Go, PostgreSQL  
+- **Communication**: Receives syslog data from drones on port 5514
 - **Key Features**:
+  - Real-time syslog data processing from drones/Jetson/Pixhawk devices
   - Ping monitoring of VPN endpoints
   - Status API for endpoint health
   - Interface type handling (main/FTS)
   - Device-specific enhanced status API
+  - Telemetry data forwarding to Monitor Service
+
+### Monitor Service
+
+- **Purpose**: Telemetry data collection, processing, and metrics aggregation
+- **Technology**: Go, PostgreSQL
+- **Communication**: HTTP polling from Healthcheck Service, metrics export to Grafana/Prometheus
+- **Key Features**:
+  - Telemetry data collection via HTTP API
+  - Data processing and aggregation
+  - Historical data storage
+  - Metrics export for monitoring systems
+  - Alerting and notification triggers
 
 ### VPN PKI
 
@@ -49,16 +70,6 @@ The Jedsy VPN Monitoring System consists of several interconnected services that
   - Endpoint registration
   - Certificate revocation
   - Security monitoring
-
-### Monitor Service
-
-- **Purpose**: Telemetry data collection and processing
-- **Technology**: Go, PostgreSQL
-- **Key Features**:
-  - Telemetry data collection
-  - Data processing and aggregation
-  - Historical data storage
-  - Alerting
 
 ## Recent Achievements
 

@@ -1,0 +1,44 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage{titlesec}
+
+% Seitenränder
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+% Fix für Pandoc tightlist
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Farben
+\definecolor{jblue}{RGB}{0, 96, 169}
+
+% Kopf- und Fußzeile
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Jedsy GmbH}
+\fancyhead[R]{\today}
+\fancyfoot[C]{Seite \thepage\ von \pageref{LastPage}}
+
+% Stil für Überschriften
+\titleformat{\section}{\color{jblue}\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\color{jblue}\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{jblue}\bfseries}{\thesubsubsection}{1em}{}
+
+\begin{document}
+
+\begin{center}
+{\Huge \textbf{Tätigkeitsbericht}}\\[0.5cm]
+{\LARGE September 2025}\\[1.5cm]
+\end{center}
+
+\newpage
+
+$body$
+
+\end{document}

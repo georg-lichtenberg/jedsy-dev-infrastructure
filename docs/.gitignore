@@ -1,0 +1,22 @@
+# Generierte PDF-Dateien
+timerecord/output/*.pdf
+
+# Temporäre LaTeX-Dateien
+*.aux
+*.log
+*.out
+*.toc
+*.lot
+*.lof
+*.blg
+*.bbl
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Git-Log Dateien
+timerecord/month/*-git-log.txt
+
+# Andere temporäre Dateien
+*.tmp
+*~
