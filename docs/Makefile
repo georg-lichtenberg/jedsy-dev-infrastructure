@@ -26,13 +26,7 @@ months: $(MONTH_PDFS)
 # Regel für die Erstellung eines Monats-PDF aus einer .md-Datei
 $(OUTPUT_DIR)/%.pdf: $(MONTH_DIR)/%.md
 	@echo "Erstelle PDF für Monat $*"
-	@$(PANDOC) $< \
-		--template=$(TEMPLATE) \
-		--toc \
-		--toc-depth=3 \
-		-V lang=de-DE \
-		-o $@
-	@echo "✓ PDF erstellt: $@"
+	@$(DOCS_DIR)/scripts/better_pdf.sh $< $@
 
 # Erstellt das PDF für den aktuellen Monat (Jahr und Monat werden abgefragt)
 current-month:
@@ -41,13 +35,7 @@ current-month:
 		echo "Fehler: Die Datei $(MONTH_DIR)/$$yearmonth.md existiert nicht."; \
 		exit 1; \
 	fi; \
-	$(PANDOC) $(MONTH_DIR)/$$yearmonth.md \
-		--template=$(TEMPLATE) \
-		--toc \
-		--toc-depth=3 \
-		-V lang=de-DE \
-		-o $(OUTPUT_DIR)/$$yearmonth.pdf && \
-	echo "✓ PDF erstellt: $(OUTPUT_DIR)/$$yearmonth.pdf"
+	$(DOCS_DIR)/scripts/better_pdf.sh $(MONTH_DIR)/$$yearmonth.md $(OUTPUT_DIR)/$$yearmonth.pdf
 
 # Erstellt ein tägliches Berichts-PDF
 daily:
@@ -63,11 +51,7 @@ daily:
 		fi; \
 		exit 1; \
 	fi; \
-	$(PANDOC) $(DAILY_DIR)/$$date.md \
-		--template=$(TEMPLATE) \
-		-V lang=de-DE \
-		-o $(OUTPUT_DIR)/$$date.pdf && \
-	echo "✓ PDF erstellt: $(OUTPUT_DIR)/$$date.pdf"
+	$(DOCS_DIR)/scripts/better_pdf.sh $(DAILY_DIR)/$$date.md $(OUTPUT_DIR)/$$date.pdf
 
 # Neues Tagesprotokoll erstellen
 new-daily:
@@ -101,11 +85,7 @@ today:
 
 # Erstellt das PDF für die Workflow-Dokumentation
 workflow:
-	$(PANDOC) $(DOCS_DIR)/markdown_latex_workflow.md \
-		--template=$(TEMPLATE) \
-		--toc \
-		-V lang=de-DE \
-		-o $(OUTPUT_DIR)/markdown_latex_workflow.pdf
+	$(DOCS_DIR)/scripts/better_pdf.sh $(DOCS_DIR)/markdown_latex_workflow.md $(OUTPUT_DIR)/markdown_latex_workflow.pdf
 
 # Installiert die benötigten LaTeX-Pakete
 install-latex-deps:
@@ -122,6 +102,8 @@ help:
 	@echo "  make today          - Erstellt ein neues Tagesprotokoll für den aktuellen Tag"
 	@echo "  make workflow       - Erstellt das PDF für die Markdown/LaTeX Workflow-Dokumentation"
 	@echo "  make install-latex-deps - Installiert die benötigten LaTeX-Pakete"
+	@echo "  make create-month   - Erstellt automatisch MD- und CSV-Dateien für einen Monat aus Git-Commits"
+	@echo "  make git-log        - Erstellt ein Git-Log für einen bestimmten Monat"
 	@echo "  make help           - Zeigt diese Hilfe an"
 
 # Erstelle ein Git-Log für einen bestimmten Monat
@@ -136,5 +118,15 @@ git-log:
 	fi; \
 	cd "$$repo_path" && \
 	echo "Git-Commits für $$month/$$year:" && \
-	git log --since="$$year-$$month-01" --until="$$year-$$month-31" --pretty=format:"%ad | %s" --date=short > "$(MONTH_DIR)/$$yearmonth-git-log.txt" && \
+	git log --since="$$year-$$month-01" --until="$$year-$$month-31" --pretty=format:"%ad | %s" --date=short | \
+	sed 's/🔒/[SECURITY]/g' | \
+	sed 's/🚀/[LAUNCH]/g' | \
+	sed 's/📊/[STATS]/g' | \
+	sed 's/🐛/[BUG]/g' | \
+	sed 's/✨/[FEATURE]/g' | \
+	sed 's/🔥/[CRITICAL]/g' > "$(MONTH_DIR)/$$yearmonth-git-log.txt" && \
 	echo "✓ Git-Log erstellt: $(MONTH_DIR)/$$yearmonth-git-log.txt"
+
+# Erstelle automatisch eine Monats-Markdown und CSV-Datei aus Git-Commits
+create-month:
+	@$(DOCS_DIR)/scripts/create_month.sh

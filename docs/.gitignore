@@ -20,3 +20,6 @@ timerecord/month/*-git-log.txt
 # Andere temporäre Dateien
 *.tmp
 *~
+
+# Script-Dateien
+scripts/*.sh

@@ -15,6 +15,9 @@
 \usepackage{framed}
 \usepackage{xcolor}
 
+% Importiere Unicode-Unterstützung
+\input{templates/unicode_support}
+
 % Für Code-Blöcke (Pandoc)
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\small}
 \definecolor{shadecolor}{RGB}{248,248,248}
@@ -84,7 +87,7 @@
     filecolor=jedsy,
     urlcolor=jedsy,
     citecolor=jedsy,
-    pdftitle={Jedsy - Tätigkeitsbericht},
+    pdftitle={$title$},
     pdfauthor={Georg Lichtenberg},
     pdfsubject={Tätigkeitsbericht},
     pdfkeywords={Jedsy, Bericht, Entwicklung}
@@ -107,7 +110,7 @@
     \vspace{1.5cm}
     {\huge \textbf{Tätigkeitsbericht}}\\
     \vspace{0.5cm}
-    {\Large September 2025}\\
+    {\Large $title$}\\
     \vspace{1cm}
     
     \vfill
