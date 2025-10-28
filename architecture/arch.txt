@@ -1,0 +1,24 @@
+jedsy-platform/
+├── architecture/
+│   ├── ARCHITECTURE.md        # (die Datei oben)
+│   ├── DATA_MODEL.md          # (PKI device/endpoint/license schema, HC raw log schema, monitor flight schema)
+│   ├── FLOWS.md               # provisioning flow, live ops flow, analytics flow
+│   └── SECURITY.md            # Keycloak realms, roles, service-to-service auth
+│
+├── mcp/
+│   ├── repo-context-server/
+│   │   ├── server.py          # minimal MCP server that just returns static JSON
+│   │   ├── schema/
+│   │   │   └── platform_description.json
+│   │   └── README.md
+│   └── runtime-check-server/  # future: talks to HC/monitor with proper tokens
+│       ├── server.py
+│       └── README.md
+│
+├── conventions/
+│   ├── env_variables.md       # shared var names expected by all services (.dev sync with cluster env)
+│   ├── make_rules.md          # required make targets that must pass locally == CI
+│   └── keycloak.md            # how services should request tokens / which roles they must enforce
+│
+└── README.md                  # high-level intro for new engineers + AI agents
+

@@ -1,0 +1,137 @@
+{
+  "environment": {
+    "clusters": [
+      {
+        "name": "dev",
+        "provider": "aws",
+        "orchestrator": "kubernetes",
+        "managed_by": "iac (Pulumi + GitHub Actions)",
+        "auth": "Keycloak realm 'jedsy'",
+        "notes": "mirrors prod, used for staging/testing"
+      },
+      {
+        "name": "prod",
+        "provider": "aws",
+        "orchestrator": "kubernetes",
+        "managed_by": "iac (Pulumi + GitHub Actions)",
+        "auth": "Keycloak realm 'jedsy'",
+        "notes": "live fleet operations"
+      }
+    ],
+    "local_dev": {
+      "method": "make",
+      "env_dir": ".dev/",
+      "contract": "local make uses same env var names and rules as CI/CD and cluster deployment"
+    }
+  },
+
+  "security": {
+    "idp": "Keycloak (realm: jedsy)",
+    "service_auth": "client id + secret",
+    "roles": {
+      "pki_user": "may request installer for a device they operate",
+      "pki_admin": "may create tenants, assign licenses, register devices",
+      "pilot": "interactive operator / dashboard user",
+      "service": "machine-to-machine access between platform services"
+    }
+  },
+
+  "network_model": {
+    "mesh": "Nebula VPN",
+    "address_space": "192.168.100.x",
+    "ip_assignment_authority": "nebula-vpn-pki",
+    "goal_state": "multiple pilots can manage multiple drones (n:m); legacy 1:1 Zerotier is being phased out"
+  },
+
+  "services": [
+    {
+      "name": "nebula-vpn-pki",
+      "alias": "PKI",
+      "language": "Python (FastAPI-style backend)",
+      "database": "Postgres",
+      "responsibilities": [
+        "device registry (Device, Tenant, VpnEndpoint)",
+        "license key management",
+        "IP address assignment for Nebula VPN",
+        "issuing installer shell scripts for Linux-based drones and pilot laptops"
+      ],
+      "truth_owner": [
+        "which device exists",
+        "which tenant owns it",
+        "which VPN endpoints/IPs are valid",
+        "whether the device is licensed and allowed to join the mesh"
+      ],
+      "auth": "Keycloak-protected GUI/API with role-based access (pki_user / pki_admin)"
+    },
+    {
+      "name": "nebula-healthcheck-service",
+      "alias": "HC",
+      "language": "Go (high-performance)",
+      "database": "Postgres",
+      "responsibilities": [
+        "actively ping every known Nebula endpoint to measure connectivity (HC -> ping -> drone)",
+        "ingest syslog/telemetry from drones (drone -> syslog -> HC)",
+        "store raw telemetry including GPS @1Hz, CPU/MEM, system state",
+        "expose live fleet status to vpn-dashboard"
+      ],
+      "truth_owner": [
+        "live connectivity state for each drone/device",
+        "latest telemetry/position snapshots"
+      ],
+      "auth": "service-to-service via Keycloak client credentials"
+    },
+    {
+      "name": "vpn-dashboard",
+      "alias": "dashboard",
+      "language": "React + Node.js backend",
+      "database": "none (reads from HC)",
+      "responsibilities": [
+        "display live drone/device status to human operators",
+        "show last seen, IPs, roles (primary/FTS), GPS, health",
+        "act as mission control UI for pilots / NOC"
+      ],
+      "truth_source": [
+        "nebula-healthcheck-service for live data"
+      ],
+      "auth": "human login via Keycloak (realm jedsy)"
+    },
+    {
+      "name": "monitor-service",
+      "alias": "monitor",
+      "language": "FastAPI backend + React client",
+      "database": "Postgres",
+      "responsibilities": [
+        "pull raw telemetry/logs from HC on a rolling basis",
+        "store raw copies (short-term)",
+        "classify into higher-level concepts like flights, incidents, and statistics",
+        "become the long-term historical record",
+        "enable reporting, compliance, analytics"
+      ],
+      "truth_owner": [
+        "historical flight records",
+        "incident history",
+        "long-term performance stats"
+      ],
+      "auth": "currently internal; will be Keycloak-protected"
+    },
+    {
+      "name": "iac",
+      "alias": "infra",
+      "language": "Pulumi",
+      "database": "n/a",
+      "responsibilities": [
+        "define AWS Kubernetes clusters dev/prod",
+        "provision and configure services (PKI, HC, dashboard, monitor, etc.)",
+        "manage env vars and secrets for each service",
+        "enforce same rules locally via 'make' and .dev as in CI/CD"
+      ],
+      "truth_owner": [
+        "which service is deployed in which cluster",
+        "which namespace/environment is dev vs prod",
+        "what config each service receives at runtime"
+      ],
+      "auth": "GitHub Actions for rollout"
+    }
+  ]
+}
+

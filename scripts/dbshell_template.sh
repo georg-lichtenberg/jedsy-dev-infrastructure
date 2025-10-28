@@ -1,13 +1,13 @@
 #!/bin/bash
-# Script for accessing the Nebula Healthcheck Service database
+# Script for accessing the SERVICE_NAME database
 # Usage: ./dbshell.sh [optional SQL command]
 
-# Database parameters
+# Database parameters - Update these for your specific service
 DB_HOST="localhost"
-DB_PORT="5433"
-DB_NAME="nebula-healthcheck-service"
-DB_USER="nebula-healthcheck-service"
-DB_PASSWORD="6UL2Vfq9GOQBm1UcnjSeqWKvsO0D4YZJ6yJflOkNsR7Z7Oul3mkKkTZniBipTgbb"
+DB_PORT="5432"
+DB_NAME="DB_NAME_PLACEHOLDER"
+DB_USER="DB_USER_PLACEHOLDER"
+DB_PASSWORD="DB_PASSWORD_PLACEHOLDER"
 
 # Function to check if psql is installed
 check_psql() {
@@ -15,6 +15,21 @@ check_psql() {
     echo "Error: PostgreSQL Client (psql) is not installed"
     echo "Please install it with: brew install postgresql"
     exit 1
+  fi
+}
+
+# Function to check if the tunnel is running
+check_tunnel() {
+  if ! nc -z $DB_HOST $DB_PORT &> /dev/null; then
+    echo "Warning: Cannot connect to database at $DB_HOST:$DB_PORT"
+    echo "You may need to start a tunnel with dbtunnel.sh first"
+    
+    # Ask the user if they want to continue anyway
+    read -p "Continue anyway? [y/N] " response
+    if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+      echo "Exiting. Please start the tunnel with: ./dbtunnel.sh"
+      exit 1
+    fi
   fi
 }
 
@@ -28,7 +43,7 @@ connect_to_db() {
     psql -h "$DB_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "$DB_USER" -c "$1"
   else
     # Otherwise start an interactive session
-    echo "Connecting to Nebula Healthcheck Service database..."
+    echo "Connecting to SERVICE_NAME database..."
     echo "Host: $DB_HOST:$DB_PORT"
     echo "Database: $DB_NAME"
     echo "User: $DB_USER"
@@ -45,4 +60,5 @@ connect_to_db() {
 
 # Main program
 check_psql
+check_tunnel
 connect_to_db "$@"
