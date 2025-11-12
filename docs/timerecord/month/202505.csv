@@ -1,0 +1,34 @@
+Datum,Repository,Commit Message,Stunden
+2025-05-02,Nebula VPN PKI,"change to github ",2
+2025-05-02,Nebula VPN PKI,"fix user_account ",2
+2025-05-02,Nebula VPN PKI,"Postgres tunnel ",2
+2025-05-03,Nebula VPN PKI,"new api /vpn/endpoints/active ",2
+2025-05-04,Nebula VPN PKI,"db integrated ",2
+2025-05-05,Nebula VPN PKI,"add CI for deployment ",2
+2025-05-05,Nebula VPN PKI,"fix requirements path ",2
+2025-05-08,Nebula VPN PKI,"more detailed reqs ",2
+2025-05-08,Nebula VPN PKI,"Remove dependency installation step from GitHub Actions workflow ",2
+2025-05-08,Nebula VPN PKI,"Remove psycopg2-binary from requirements.txt ",2
+2025-05-08,Nebula VPN PKI,"Update psycopg2 dependency to psycopg2-binary in requirements.txt ",2
+2025-05-08,Nebula VPN PKI,"update requirements ",1
+2025-05-09,Nebula VPN PKI,"Add alembic version 1.13.2 to requirements.txt ",2
+2025-05-09,Nebula VPN PKI,"add venv to gitignore ",2
+2025-05-09,Nebula VPN PKI,"alembic fix and initial tables ",3
+2025-05-09,Nebula VPN PKI,"initial alembic setup ",3
+2025-05-11,Nebula VPN PKI,"admin templates initial ",3
+2025-05-11,Nebula VPN PKI,"gitignore ",2
+2025-05-13,Nebula VPN PKI,"💄 Admin UI updated: dark layout; improved dashboard ",1
+2025-05-15,Nebula VPN PKI,"change dockerfile to get nebula binaries and include cert gen script in image ",2
+2025-05-15,Nebula VPN PKI,"fix docker context in CI ",2
+2025-05-15,Nebula VPN PKI,"use /app for the cert gen script directory ",2
+2025-05-17,Nebula VPN PKI,"Ignore local installer artifacts ",2
+2025-05-17,Nebula VPN PKI,"Improve install.sh after merge ",1
+2025-05-17,Nebula VPN PKI,"Merge ui-redesign into main ",2
+2025-05-20,Nebula VPN PKI,"common interface for all architectures ",2
+2025-05-20,Nebula VPN PKI,"common interface for all architectures ",2
+2025-05-23,Nebula VPN PKI,"add support armv6l ",2
+2025-05-29,Nebula VPN PKI,"add alembic migration for the arch column ",2
+2025-05-29,Nebula VPN PKI,"copy the nebula cert binary to the correct location ",2
+2025-05-29,Nebula VPN PKI,"fix Dockerfile to copy nebula-cert binary correctly ",2
+2025-05-29,Nebula VPN PKI,"put back the alembic upgrade before running the server ",2
+2025-05-30,Nebula VPN PKI,"Update Dockerfile to copy cert-sign.sh to /usr/local/bin and adjust permissions ",2

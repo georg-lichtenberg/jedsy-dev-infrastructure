@@ -9,16 +9,35 @@ OUTPUT_DIR = $(TIMERECORD_DIR)/output
 TEMPLATE_DIR = $(DOCS_DIR)/templates
 PANDOC = pandoc
 TEMPLATE = $(TEMPLATE_DIR)/jedsy-report-template.tex
+YEAR = $(shell date +%Y)
 
 # Erstelle Ausgabeverzeichnis falls es nicht existiert
 $(shell mkdir -p $(OUTPUT_DIR))
 
-# Liste aller Monatsdateien ermitteln (nur .md Dateien)
-MONTH_FILES = $(wildcard $(MONTH_DIR)/*.md)
-MONTH_PDFS = $(patsubst $(MONTH_DIR)/%.md,$(OUTPUT_DIR)/%.pdf,$(MONTH_FILES))
+# Standard-Ziel: Erstelle alle Monatsberichte des aktuellen Jahres
+all: year-reports
 
-# Standard-Ziel
-all: months workflow
+# Lösche alle generierten Dateien des aktuellen Jahres
+clean:
+	@echo "=== Lösche alle generierten Dateien für $(YEAR) ==="
+	@rm -f $(MONTH_DIR)/$(YEAR)*.csv $(MONTH_DIR)/$(YEAR)*.md $(OUTPUT_DIR)/$(YEAR)*.pdf
+	@echo "✅ Alle Dateien für $(YEAR) gelöscht"
+
+# Erstelle alle 12 Monate des aktuellen Jahres
+year-reports:
+	@echo "=== Erstelle Zeiterfassungsberichte für $(YEAR) ==="
+	@for month in 01 02 03 04 05 06 07 08 09 10 11 12; do \
+		yearmonth="$(YEAR)$$month"; \
+		echo "--- Erstelle $$yearmonth ---"; \
+		$(DOCS_DIR)/scripts/create_month.sh $(YEAR) $$month; \
+		if [ -f "$(MONTH_DIR)/$$yearmonth.md" ]; then \
+			pandoc $(MONTH_DIR)/$$yearmonth.md -o $(OUTPUT_DIR)/$$yearmonth.pdf --pdf-engine=xelatex -V geometry:margin=2cm -V documentclass=article -V lang=de 2>/dev/null || echo "PDF-Fehler für $$yearmonth ignoriert"; \
+		fi; \
+	done
+	@echo "✅ Alle Berichte für $(YEAR) erstellt!"
+	@echo "📊 CSV-Dateien: $(MONTH_DIR)/$(YEAR)*.csv"
+	@echo "📄 Markdown: $(MONTH_DIR)/$(YEAR)*.md"
+	@echo "📑 PDF-Berichte: $(OUTPUT_DIR)/$(YEAR)*.pdf"
 
 # Alle Monatsberichte erstellen
 months: $(MONTH_PDFS)
@@ -104,6 +123,13 @@ help:
 	@echo "  make install-latex-deps - Installiert die benötigten LaTeX-Pakete"
 	@echo "  make create-month   - Erstellt automatisch MD- und CSV-Dateien für einen Monat aus Git-Commits"
 	@echo "  make git-log        - Erstellt ein Git-Log für einen bestimmten Monat"
+	@echo ""
+	@echo "Zeiterfassung:"
+	@echo "  make                - Erstellt alle Monatsberichte (CSV/MD/PDF) für das aktuelle Jahr"
+	@echo "  make clean          - Löscht alle generierten Dateien des aktuellen Jahres"
+	@echo "  make year-reports   - Alternative zu 'make'"
+	@echo "  make month-YYYYMM   - Einzelner Monat (z.B. make month-202502)"
+	@echo ""
 	@echo "  make help           - Zeigt diese Hilfe an"
 
 # Erstelle ein Git-Log für einen bestimmten Monat
@@ -130,3 +156,19 @@ git-log:
 # Erstelle automatisch eine Monats-Markdown und CSV-Datei aus Git-Commits
 create-month:
 	@$(DOCS_DIR)/scripts/create_month.sh
+
+
+
+# Allgemeine Regel für beliebige Monate (Format: YYYYMM)
+month-%:
+	@year_month=$*; \
+	year=$${year_month:0:4}; \
+	month=$${year_month:4:2}; \
+	echo "=== Erstelle Zeiterfassung für $$month/$$year ==="; \
+	$(DOCS_DIR)/scripts/create_month.sh $$year $$month; \
+	echo "=== Erstelle PDF ==="; \
+	pandoc $(MONTH_DIR)/$$year_month.md -o $(OUTPUT_DIR)/$$year_month.pdf --pdf-engine=xelatex -V geometry:margin=2cm -V documentclass=article -V lang=de; \
+	echo "✅ $$month/$$year komplett erstellt:"; \
+	echo "   📊 CSV: $(MONTH_DIR)/$$year_month.csv"; \
+	echo "   📄 Markdown: $(MONTH_DIR)/$$year_month.md"; \
+	echo "   📑 PDF: $(OUTPUT_DIR)/$$year_month.pdf"

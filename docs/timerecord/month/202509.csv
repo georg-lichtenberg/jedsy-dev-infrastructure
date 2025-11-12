@@ -1,57 +1,140 @@
-Datum,Projekt,Kategorie,Tätigkeit,Stunden,Bemerkungen
-06.09.2025,VPN Dashboard,Frontend-Entwicklung,Implementierung von GPS-Telemetrie und Live-Status-Anzeige,,
-07.09.2025,VPN Dashboard,Frontend-Entwicklung,Entwicklung einer neuen DroneMapPage,,
-07.09.2025,VPN Dashboard,Frontend-Entwicklung,Integration mit dem Healthcheck-Service über GPS und erweiterte Status-API-Endpunkte,,
-07.09.2025,VPN Dashboard,Backend/Infrastructure,Verbesserung der Authentifizierungsprotokollierung,,
-10.09.2025,VPN Dashboard,Frontend-Entwicklung,Implementierung von Drone Monitor App Download-Feature und FCM-Integration,,
-11.09.2025,VPN Dashboard,Frontend-Entwicklung,Aktualisierung von keycloak-js auf Version 26,,
-11.09.2025,VPN Dashboard,Frontend-Entwicklung,Bereinigung und Aktualisierung von .gitignore,,
-11.09.2025,VPN Dashboard,Frontend-Entwicklung,Wiederherstellung des Dockerfiles für die Staging-Umgebung,,
-14.09.2025,VPN Dashboard,Frontend-Entwicklung,Aktualisierung der Jedsy Drone App APK mit Firebase-Berechtigungen,,
-25.09.2025,VPN Dashboard,Frontend-Entwicklung,Erstellung eines download_logs.sh-Skripts für die Protokollabfrage von Kubernetes-Pods,,
-02.09.2025,VPN Dashboard,Backend/Infrastructure,Anzeige von Architekturinformationen in der VPN-Endpunkttabelle,,
-25.09.2025,Nebula VPN PKI,Konfiguration und Umgebung,Entfernung hartcodierter Keycloak-URLs,,
-25.09.2025,Nebula VPN PKI,Konfiguration und Umgebung,Hinzufügen von umgebungsspezifischer Keycloak-Konfigurationsunterstützung,,
-26.09.2025,Nebula VPN PKI,Konfiguration und Umgebung,Standardisierung der Keycloak-Konfiguration und Entfernung von ungenutztem secret_key,,
-26.09.2025,Nebula VPN PKI,PKI-Verbesserungen,Korrektur von Datenbankinitialisierungsproblemen,,
-26.09.2025,Nebula VPN PKI,PKI-Verbesserungen,Verbesserung der Alembic-Migrationskonfiguration,,
-26.09.2025,Nebula VPN PKI,PKI-Verbesserungen,Ersetzung hartcodierter Client-IDs durch standardisierte Konfiguration,,
-27.09.2025,Nebula VPN PKI,PKI-Verbesserungen,Hinzufügen umfassender Qualitätsprüfungen zum Makefile und CI/CD,,
-29.09.2025,Nebula VPN PKI,PKI-Verbesserungen,Hinzufügen eines dynamischen CLIENT_ID-Konfigurationssystems,,
-03.09.2025,Nebula Healthcheck Service,GPS-Telemetrie,Hinzufügen von GPS-API-Handlern für Track- und Positionsendpunkte,,
-04.09.2025,Nebula Healthcheck Service,GPS-Telemetrie,Implementierung eines kompakten /gps API-Endpunkts für alle aktuellen GPS-Positionen,,
-05.09.2025,Nebula Healthcheck Service,GPS-Telemetrie,Implementierung der GPS-Telemetrie in die dedizierte GPS-Tabelle,,
-06.09.2025,Nebula Healthcheck Service,GPS-Telemetrie,Implementierung von GPS-Telemetrie-API und Verbesserung des Datenbankschemas,,
-11.09.2025,Nebula Healthcheck Service,FCM-Integration,Hinzufügen der Firebase Cloud Messaging (FCM)-Integration,,
-12.09.2025,Nebula Healthcheck Service,FCM-Integration,Verbesserung der FCM-Fehlerbehebung mit detaillierter Private-Key-Analyse,,
-13.09.2025,Nebula Healthcheck Service,FCM-Integration,Verbesserung von FCM mit expliziter device_id-Behandlung für Deep Linking,,
-14.09.2025,Nebula Healthcheck Service,FCM-Integration,Optimierung des FCM-Services,,
-15.09.2025,Nebula Healthcheck Service,FCM-Integration,Implementierung eines konfigurierbaren Alarmsystems mit FCM-Integration,,
-02.09.2025,Nebula Healthcheck Service,Healthcheck-Optimierungen,Hinzufügen des Architektur-Felds zum API-Response,,
-05.09.2025,Nebula Healthcheck Service,Healthcheck-Optimierungen,Behebung der GPS-Telemetrieverarbeitung und Übersetzung aller Protokollnachrichten ins Englische,,
-07.09.2025,Nebula Healthcheck Service,Healthcheck-Optimierungen,Behebung der Handhabung von string-formatierten float-Werten in der GPS-Telemetrieverarbeitung,,
-15.09.2025,Nebula Healthcheck Service,Healthcheck-Optimierungen,Optimierung der Flugsimulatorparameter für Batteriewarntests,,
-16.09.2025,Nebula Healthcheck Service,Healthcheck-Optimierungen,Implementierung eines verbesserten Geräte-Caches mit Leistungskennzahlen,,
-26.09.2025,Nebula Healthcheck Service,Healthcheck-Optimierungen,Entfernung der .env-Abhängigkeit und hartcodierter Standardwerte,,
-17.09.2025,Monitor Service,Setup und Konfiguration,Reorganisation der Drohnentelemetriedateien in strukturierte Verzeichnisse,,
-18.09.2025,Monitor Service,Setup und Konfiguration,Hinzufügen einer Standard-Jetson-Telemetry-Bridge-Konfiguration für die Bereitstellung auf dem Jetson,,
-18.09.2025,Monitor Service,Setup und Konfiguration,Hinzufügen eines jetson_telemetry_bridge-Systemdienstes für die Bereitstellung auf dem Jetson,,
-18.09.2025,Monitor Service,Setup und Konfiguration,Anpassung des Jetson-Telemetrie-Bridges für UDP-Verbindungen,,
-19.09.2025,Monitor Service,Setup und Konfiguration,Aktualisierung der Monitoring-Architekturdiagramme für neuen Kommunikationsfluss,,
-19.09.2025,Monitor Service,CI/CD und Deployment,Behebung der CI-Pipeline und Entfernung von Graylog-Abhängigkeiten,,
-19.09.2025,Monitor Service,CI/CD und Deployment,Aktualisierung veralteter GitHub Actions und Hinzufügen von Mermaid CLI,,
-19.09.2025,Monitor Service,CI/CD und Deployment,Hinzufügen automatisierter Codeformatierung und Qualitätswerkzeuge,,
-19.09.2025,Monitor Service,CI/CD und Deployment,Behebung von SQLAlchemy-reservierten Schlüsselwortkonflikten,,
-19.09.2025,Monitor Service,CI/CD und Deployment,Hinzufügen von package.yml für Docker-Build und zukünftige Bereitstellung,,
-19.09.2025,Monitor Service,CI/CD und Deployment,Vervollständigung der Build- und Test-AWS-Konfiguration,,
-21.09.2025,Monitor Service,CI/CD und Deployment,Aktivierung der AWS-Bereitstellung für monitor-service,,
-25.09.2025,Monitor Service,CI/CD und Deployment,Hinzufügen fehlender HTTP-Client- und Systemüberwachungsabhängigkeiten,,
-19.09.2025,Infrastructure as Code (IAC),Konfiguration und Management,Hinzufügen des monitor-service zur Mikroservice-Konfiguration,,
-19.09.2025,Infrastructure as Code (IAC),Konfiguration und Management,Aktualisierung der monitor-service-Konfiguration nach manuellen Bearbeitungen,,
-21.09.2025,Infrastructure as Code (IAC),Konfiguration und Management,Hinzufügen von monitor-service zur IAC-Konfiguration,,
-18.09.2025,Infrastructure as Code (IAC),Konfiguration und Management,Hinzufügen einer öffentlichen Website-Bereitstellung,,
-26.09.2025,Infrastructure as Code (IAC),Konfiguration und Management,Standardisierung der Keycloak-Client-Konfiguration für alle Mikroservices,,
-07.09.2025,Infrastructure as Code (IAC),IAC-Verbesserungen,Entfernung der Keycloak-Client-Erstellung für nebula-healthcheck-service um Duplizierung zu vermeiden,,
-07.09.2025,Infrastructure as Code (IAC),IAC-Verbesserungen,Korrektur des Client-Secrets für VPN-Dashboard,,
-26.09.2025,Infrastructure as Code (IAC),IAC-Verbesserungen,Behebung der Bereitstellungsreihenfolge in deploy.sh,,
-25.09.2025,Infrastructure as Code (IAC),IAC-Verbesserungen,Behebung der Mikrodienst-Instanziierung um alle konfigurierten Dienste einzuschließen,,
+Datum,Repository,Commit Message,Stunden
+2025-09-01,Nebula Healthcheck Service,"Füge Architektur-Feld zu Endpoint-Status hinzu ",2
+2025-09-01,Nebula VPN PKI,"fix: Korrigiere Feldname in VPN-Endpoints-API von 'device_type' zu 'type' ",1.5
+2025-09-02,Nebula Healthcheck Service,"Add architecture field to API response and translate comments to English ",2
+2025-09-02,Nebula Healthcheck Service,"Fix architecture parameter handling in syncDeviceInfoFromPKI function ",2
+2025-09-02,Nebula Healthcheck Service,"Füge Architektur-Feld zu Endpoint-Status hinzu ",2
+2025-09-02,Nebula Healthcheck Service,"Remove duplicate migration file ",2
+2025-09-02,VPN Dashboard,"Display architecture information in VPN endpoint table ",2.5
+2025-09-03,Nebula Healthcheck Service,"Add continuous flight simulation script for testing drone telemetry ",2
+2025-09-03,Nebula Healthcheck Service,"Add documentation for drone flight simulation ",0.5
+2025-09-03,Nebula Healthcheck Service,"Add English documentation for GPS telemetry integration ",0.5
+2025-09-03,Nebula Healthcheck Service,"Add GPS API handlers for track and position endpoints ",2
+2025-09-03,Nebula Healthcheck Service,"Add GPS telemetry migration and handling for high-frequency (1Hz) position data ",2
+2025-09-03,Nebula Healthcheck Service,"Fix log message formatting in main.go ",2.5
+2025-09-04,Nebula Healthcheck Service,"Implementiere GPS-Telemetrie-Handler und aktualisiere API-Dokumentation ",2
+2025-09-04,Nebula Healthcheck Service,"Implementiere kompakten /gps API-Endpunkt für alle aktuellen GPS-Positionen ",2
+2025-09-05,Nebula Healthcheck Service,"Add current database schema extracted from production ",2
+2025-09-05,Nebula Healthcheck Service,"Add document with open questions about time synchronization and other technical challenges ",2
+2025-09-05,Nebula Healthcheck Service,"Add GPS API client for external service integration ",2
+2025-09-05,Nebula Healthcheck Service,"Add GPS endpoints for device name queries and update Swagger documentation ",0.5
+2025-09-05,Nebula Healthcheck Service,"Add GPS telemetry schema and migration files ",2
+2025-09-05,Nebula Healthcheck Service,"Add integration hints with best practices for API usage ",2
+2025-09-05,Nebula Healthcheck Service,"Add migration for architecture column in endpoint_status table ",2
+2025-09-05,Nebula Healthcheck Service,"Add test script for API endpoints with device_id extraction ",2
+2025-09-05,Nebula Healthcheck Service,"Archive old database migrations to preserve history ",2
+2025-09-05,Nebula Healthcheck Service,"Create API integration plan for Nebula Healthcheck Service ",2
+2025-09-05,Nebula Healthcheck Service,"Create initial API client for external service integration ",3
+2025-09-05,Nebula Healthcheck Service,"Fix code formatting in GPS handlers ",2.5
+2025-09-05,Nebula Healthcheck Service,"Fix GPS endpoints by migrating from Gin to httprouter for consistent API ",2
+2025-09-05,Nebula Healthcheck Service,"Fix GPS telemetry processing and translate all log messages to English ",2
+2025-09-05,Nebula Healthcheck Service,"Fix jq filtering in test script to properly display response objects ",2
+2025-09-05,Nebula Healthcheck Service,"GPS-Telemetrie-Migration angepasst und erfolgreich durchgeführt ",2
+2025-09-05,Nebula Healthcheck Service,"Implement direct GPS telemetry processing in syslog.go and add debug logs for error diagnosis ",2
+2025-09-05,Nebula Healthcheck Service,"Implementierung der GPS-Telemetrie in die dedizierte GPS-Tabelle ",2
+2025-09-05,Nebula Healthcheck Service,"Remove outdated database migrations in favor of consolidated schema ",2
+2025-09-05,Nebula Healthcheck Service,"Update database schema to latest version and add migration documentation ",0.5
+2025-09-05,Nebula Healthcheck Service,"Update interface type migration to latest version ",2
+2025-09-05,Nebula Healthcheck Service,"Update README.md with additional documentation about API endpoints ",0.5
+2025-09-06,Nebula Healthcheck Service,"Implementiere GPS-Telemetrie-API und verbessere Datenbank-Schema ",2
+2025-09-06,VPN Dashboard,"Implementiere GPS-Telemetrie und Live-Status-Anzeige im Dashboard ",2
+2025-09-07,Nebula Healthcheck Service,"Apply Go formatting standards with gofmt ",2.5
+2025-09-07,Nebula Healthcheck Service,"Fix: Handle string-formatted float values in GPS telemetry processing ",2.5
+2025-09-07,VPN Dashboard,"Add enhanced logging for auth configuration and token requests ",3
+2025-09-07,VPN Dashboard,"Add GPS and enhanced status API endpoints for integration with Healthcheck service ",2
+2025-09-07,VPN Dashboard,"new page DroneMapPage ",2
+2025-09-10,VPN Dashboard,"Add Drone Monitor App download feature and FCM integration ",2
+2025-09-11,Nebula Healthcheck Service,"docs: Update Swagger documentation for FCM endpoints ",0.5
+2025-09-11,Nebula Healthcheck Service,"feat: Add Firebase Cloud Messaging (FCM) integration ",4
+2025-09-11,Nebula Healthcheck Service,"fix: Downgrade Go version requirement to 1.22 for staging compatibility ",1.5
+2025-09-11,Nebula Healthcheck Service,"Update to Go 1.23 in Dockerfile and add docker-build target to Makefile ",2
+2025-09-11,VPN Dashboard,"Cleanup: remove obsolete files and update .gitignore ",1
+2025-09-11,VPN Dashboard,"Restore Dockerfile for staging environment ",2
+2025-09-11,VPN Dashboard,"Update keycloak-js to version 26 as required by team ",2
+2025-09-12,Nebula Healthcheck Service,"Add detailed logging for Firebase environment variables ",2
+2025-09-12,Nebula Healthcheck Service,"Enhance FCM debugging with detailed private key analysis to fix staging issues ",2
+2025-09-12,Nebula Healthcheck Service,"Fix FCM private key formatting and enhance error logging ",2.5
+2025-09-12,Nebula Healthcheck Service,"Update .gitignore to exclude log files and temporary files ",2
+2025-09-12,Nebula Healthcheck Service,"Update Swagger documentation ",0.5
+2025-09-12,Nebula Healthcheck Service,"Update Swagger UI configuration with absolute URL and enhanced options ",3
+2025-09-13,Nebula Healthcheck Service,"Add device_id support to FCM alerts for deep linking to drone status ",2
+2025-09-13,Nebula Healthcheck Service,"Enhance FCM with explicit device_id handling for deep linking ",2
+2025-09-13,Nebula Healthcheck Service,"Fix FCM alert endpoint parameter handling and Firebase priority validation ",2
+2025-09-13,Nebula Healthcheck Service,"Fix Firebase private key handling to detect and handle placeholder values ",2
+2025-09-13,Nebula Healthcheck Service,"Update README with FCM integration details and development guidelines ",2
+2025-09-14,Nebula Healthcheck Service,"Clean up scripts directory; keeping only download_logs.sh and update_firebase_creds.sh ",1
+2025-09-14,Nebula Healthcheck Service,"Improve base64 detection and handling in FCM private key normalization ",2
+2025-09-14,Nebula Healthcheck Service,"Optimize FCM service to check private key only during initialization ",3
+2025-09-14,Nebula Healthcheck Service,"Simplify FCM service private key handling with direct logging ",2
+2025-09-14,VPN Dashboard,"Update Jedsy Drone App APK with fixed Firebase permissions and clickable cards ",2
+2025-09-15,Nebula Healthcheck Service,"Implement configurable alert system with FCM integration ",3
+2025-09-15,Nebula Healthcheck Service,"Optimize flight simulator parameters and telemetry processing for battery alert testing ",2
+2025-09-16,Nebula Healthcheck Service,"better debug output for auth errors ",2
+2025-09-16,Nebula Healthcheck Service,"chore: fail fast on device cache setup; emoji-fy fatal logs; run swagger before build ",1
+2025-09-16,Nebula Healthcheck Service,"feat: add device cache content endpoint to expose device cache data for admin debugging ",4
+2025-09-16,Nebula Healthcheck Service,"Implement enhanced device cache with performance metrics ",2
+2025-09-16,Nebula Healthcheck Service,"refactor: use individual device lookups instead of map copy for device cache content ",2.5
+2025-09-16,Nebula Healthcheck Service,"scripts: pulumi_config helper to set Pulumi secret config (stdin support) ",3
+2025-09-16,Nebula Healthcheck Service,"swagger updated ",1
+2025-09-17,Monitor Service,"Reorganize drone telemetry files into structured directories ",2
+2025-09-18,Monitor Service,"[jetson_telemetry_bridge] actually use the local logging parameters from the config file ",3
+2025-09-18,Monitor Service,"[jetson_telemetry_bridge] load drone id from config file ",3
+2025-09-18,Monitor Service,"[jetson_telemetry_bridge] use connection string for mavlink connection instead of port of baudrate s",2
+2025-09-18,Monitor Service,"add default jetson_telemetry_bridgee config for deployment to jetson ",3
+2025-09-18,Monitor Service,"add jetson_telemetry_bridge systemd service for deployment to jetson ",2
+2025-09-18,Monitor Service,"remove venv ",2
+2025-09-19,Monitor Service,"[jetson_telemetry_bridge] explicitly set python path for service ",2
+2025-09-19,Monitor Service,"Add automated code formatting and quality tools ",2.5
+2025-09-19,Monitor Service,"Add package.yml for Docker build and future deployment ",2
+2025-09-19,Monitor Service,"ci: temporarily disable linting to fix core CI failures ",2
+2025-09-19,Monitor Service,"Complete build and test AWS configuration ",3
+2025-09-19,Monitor Service,"feat: add VS Code Mermaid support ",4
+2025-09-19,Monitor Service,"Finalize package.yml after pre-commit fixes ",2
+2025-09-19,Monitor Service,"Fix all linting errors: line length; whitespace; f-strings; redefined imports ",2
+2025-09-19,Monitor Service,"Fix CI pipeline and remove Graylog dependencies ",2
+2025-09-19,Monitor Service,"Fix CI: Remove npm cache from Node.js setup ",3
+2025-09-19,Monitor Service,"Fix SQLAlchemy reserved keyword conflicts ",2
+2025-09-19,Monitor Service,"Fix type checking for CI ",2
+2025-09-19,Monitor Service,"fix: resolve CI failures - dev tools and documentation config ",1.5
+2025-09-19,Monitor Service,"fix: resolve Mermaid syntax errors and Docker build failures ",1.5
+2025-09-19,Monitor Service,"fix: resolve remaining Mermaid syntax errors ",1.5
+2025-09-19,Monitor Service,"fix: update deprecated GitHub Actions and add Mermaid CLI ",1.5
+2025-09-19,Monitor Service,"fix: update GitHub Actions to latest versions ",1.5
+2025-09-19,Monitor Service,"Remove Slack notification from CI workflow ",2
+2025-09-19,Monitor Service,"Test AWS variables configuration in package.yml ",3
+2025-09-19,Monitor Service,"Update monitoring architecture diagrams for new communication flow ",2
+2025-09-20,Monitor Service,"Fix CI: Update AWS actions and make ECR push optional ",2
+2025-09-21,Monitor Service,"🚀 Enable AWS deployment for monitor-service ",2
+2025-09-21,Monitor Service,"🔧 Force rebuild to create ECR repository ",2
+2025-09-25,Monitor Service,"Add download_logs.sh script for log retrieval from Kubernetes pods ",2
+2025-09-25,Monitor Service,"Add FastAPI and monitoring dependencies to requirements.txt ",2
+2025-09-25,Monitor Service,"Add missing HTTP client and system monitoring dependencies ",2
+2025-09-25,Nebula VPN PKI,"feat: Add environment-specific Keycloak configuration support ",4
+2025-09-25,Nebula VPN PKI,"fix: Remove hardcoded Keycloak URLs from PKI service ",1.5
+2025-09-25,VPN Dashboard,"Add download_logs.sh script for log retrieval from Kubernetes pods ",2
+2025-09-26,Nebula Healthcheck Service,"fix: Add enhanced debugging tools and remove godotenv dependency ",1.5
+2025-09-26,Nebula Healthcheck Service,"fix: complete healthcheck service environment variable fixes ",1.5
+2025-09-26,Nebula Healthcheck Service,"fix: Remove .env dependency and hardcoded defaults ",1.5
+2025-09-26,Nebula VPN PKI,"Add comprehensive validation to GitHub Actions workflow ",2
+2025-09-26,Nebula VPN PKI,"Fix Alembic migration env.py to use lazy settings() instead of DATABASE_URL import ",2
+2025-09-26,Nebula VPN PKI,"Fix CLIENT_ID to use KEYCLOAK_CLIENT_ID environment variable instead of hardcoded 'PKI' ",2
+2025-09-26,Nebula VPN PKI,"Fix database.py startup bug - use Pydantic settings instead of direct env access ",2
+2025-09-26,Nebula VPN PKI,"Fix database.py to use lazy initialization ",3
+2025-09-26,Nebula VPN PKI,"Fix GitHub Actions validation to use settings() function ",2
+2025-09-26,Nebula VPN PKI,"Fix import-time validation errors with lazy configuration loading ",3
+2025-09-26,Nebula VPN PKI,"fix: clean up Alembic migration environment formatting ",1.5
+2025-09-26,Nebula VPN PKI,"fix: Replace hardcoded 'PKI' client ID with standardized configuration ",1.5
+2025-09-26,Nebula VPN PKI,"Standardize Keycloak configuration and remove unused secret_key ",3
+2025-09-26,Nebula VPN PKI,"Trigger rebuild: Add configuration comment ",3
+2025-09-27,Nebula VPN PKI,"feat: Add comprehensive quality checks to Makefile and CI/CD ",4
+2025-09-27,Nebula VPN PKI,"feat: Production-ready configuration and critical bug fixes ",4
+2025-09-27,Nebula VPN PKI,"fix: Replace settings.keycloak_client_id with settings().keycloak_client_id ",1.5
+2025-09-27,Nebula VPN PKI,"fix: Update GitHub Actions to latest versions and fix CI issues ",1.5
+2025-09-27,Nebula VPN PKI,"improve: Add file existence check for artifact uploads ",2
+2025-09-29,Nebula VPN PKI,"feat: Add dynamic CLIENT_ID configuration and version tracking system ",4
+2025-09-29,Nebula VPN PKI,"Fix missing KEYCLOAK_CLIENT_ID variable in installer template ",2
+2025-09-29,Nebula VPN PKI,"refactor: Update environment variable access in download_installer_script_by_license ",2.5
+2025-09-30,Nebula VPN PKI,"keycloak utilities ",2
+2025-09-30,VPN Dashboard,"fix: Use correct client ID for VPN Dashboard authentication ",1.5
+2025-10-01,VPN Dashboard,"docs: Add FCM testing documentation and improve scripts ",0.5
+2025-10-01,VPN Dashboard,"feat: Clean up VPN Dashboard configuration and add useful development scripts ",4

@@ -1,0 +1,14 @@
+Datum,Repository,Commit Message,Stunden
+2025-11-01,Monitor Service,"Fix log deduplication system with message_hash ",2
+2025-11-02,Monitor Service,"🔧 Complete async session and duplicate key error fixes ",2
+2025-11-02,Monitor Service,"🔧 Fix mypy type errors in healthcheck_poller ",2
+2025-11-02,Monitor Service,"🔧 Fix SQLAlchemy async session greenlet issues ",2
+2025-11-02,Nebula Healthcheck Service,"Complete fleet synchronization and fast simulation improvements ",2
+2025-11-02,Nebula Healthcheck Service,"Fix actual GPS timestamp processing in telemetry_processor ",2
+2025-11-02,Nebula Healthcheck Service,"Fix critical fleet synchronization: preserve drone GPS timestamps ",2
+2025-11-03,Monitor Service,"🔧 Fix greenlet error in duplicate key handling ",2
+2025-11-03,Monitor Service,"Fix cursor precision: use microseconds instead of milliseconds ",2
+2025-11-04,Monitor Service,"Add detailed duplicate tracking and logging ",2
+2025-11-04,Monitor Service,"Eliminate greenlet errors: remove problematic async operations ",2
+2025-11-04,Monitor Service,"Fix greenlet issues: avoid rollback; use expunge_all() ",2
+2025-11-04,Monitor Service,"Fix misleading batch insert success logging ",2

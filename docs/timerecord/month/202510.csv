@@ -1,0 +1,75 @@
+Datum,Repository,Commit Message,Stunden
+2025-10-02,VPN Dashboard,"feat: Add comprehensive CI quality pipeline and code cleanup ",4
+2025-10-02,VPN Dashboard,"fix: Complete TypeScript errors and restore proper CI quality checks ",1.5
+2025-10-02,VPN Dashboard,"fix: Replace 'any' types with proper RawDeviceData interface ",1.5
+2025-10-02,VPN Dashboard,"fix: Resolve all TypeScript type checking errors ",1.5
+2025-10-04,VPN Dashboard,"feat: implement server-side configuration for Keycloak ",4
+2025-10-04,VPN Dashboard,"fix: resolve makefile warnings and update dependencies ",1.5
+2025-10-06,VPN Dashboard,"chore: bump version to trigger redeploy with server-side config ",1
+2025-10-07,VPN Dashboard,"Debug: Fix Keycloak clientId configuration ",1.5
+2025-10-07,VPN Dashboard,"fix: make KEYCLOAK_CLIENT_SECRET optional for CI/CD compatibility ",1.5
+2025-10-07,VPN Dashboard,"fix: use separate frontend and backend Keycloak clients ",1.5
+2025-10-07,VPN Dashboard,"style: fix code formatting with Prettier ",2.5
+2025-10-07,VPN Dashboard,"style: fix Prettier formatting issues ",2.5
+2025-10-08,VPN Dashboard,"Add comprehensive authentication logging ",2
+2025-10-08,VPN Dashboard,"chore: format server.js with Prettier ",2.5
+2025-10-08,VPN Dashboard,"chore(auth): log Keycloak token exchange response (mask tokens) ",1
+2025-10-08,VPN Dashboard,"chore(auth): switch to server-side login flow (redirect to /api/auth/login) ",1
+2025-10-08,VPN Dashboard,"chore(make): run code-format prior to checks in install; format server.js ",2.5
+2025-10-08,VPN Dashboard,"fix(auth): include client_secret in token exchange for confidential Keycloak client ",1.5
+2025-10-08,VPN Dashboard,"fix(auth): use EXTERNAL_PROTOCOL fallback and add debug logs for clientId ",1.5
+2025-10-17,Monitor Service,"Add configuration; requirements; and documentation for healthcheck integration ",0.5
+2025-10-17,Monitor Service,"Add docs_dir to mkdocs.yml to fix tests ",2
+2025-10-17,Monitor Service,"Add static directory with Mermaid diagram rendering scripts and documentation ",0.5
+2025-10-17,Monitor Service,"Clean up ignored files and add additional documentation and configuration ",0.5
+2025-10-17,Monitor Service,"Fix linting issues and integrate code formatting into build process ",2.5
+2025-10-17,Monitor Service,"Fix type checking errors in models.py by properly typing SQLAlchemy models ",2
+2025-10-17,Monitor Service,"Fix whitespace in JS and update MkDocs YAML configuration ",1
+2025-10-17,Nebula Healthcheck Service,"Fix duplicate FCM route in Swagger and update environment variable configuration ",1
+2025-10-18,Monitor Service,"codecov ",2
+2025-10-18,Monitor Service,"env missing in Makefile ",2
+2025-10-18,Monitor Service,"Fix CI pipeline issues: Update test to check for consolidated requirements and ensure virtual env ac",2
+2025-10-18,Monitor Service,"linting updated ",1
+2025-10-18,Monitor Service,"Refactor requirements and fix type checking issues ",2
+2025-10-19,Monitor Service,"Consolidate database functionality to async-only SQLAlchemy ",2
+2025-10-19,Monitor Service,"Fix SQLAlchemy model conflicts by removing duplicate Base and metadata attribute ",2
+2025-10-19,Monitor Service,"Setup database schema for monitor service ",2
+2025-10-20,Nebula Healthcheck Service,"Add logs export API with test scripts for CI ",2
+2025-10-20,Nebula Healthcheck Service,"Add make to Dockerfile dependencies ",2
+2025-10-20,Nebula Healthcheck Service,"Fix logs_export endpoint to work without authentication context ",2
+2025-10-20,Nebula Healthcheck Service,"Fix sed commands in Makefile for Alpine Linux compatibility ",2
+2025-10-20,Nebula Healthcheck Service,"Simplify build process for Docker compatibility ",2
+2025-10-20,Nebula Healthcheck Service,"Update GitHub Actions in package.yml and remove unnecessary workflow files ",2
+2025-10-20,Nebula Healthcheck Service,"Update module name and fix imports throughout the codebase ",2
+2025-10-21,Nebula Healthcheck Service,"Adapt logs_export to work with existing structured_logs table ",2
+2025-10-21,Nebula Healthcheck Service,"Add /logs/export endpoint with route registration and swagger docs ",2
+2025-10-21,Nebula Healthcheck Service,"Fix device type constraint violation ",2
+2025-10-21,Nebula Healthcheck Service,"simplified logs queries ",2
+2025-10-22,Monitor Service,"duplicate rule ",2
+2025-10-22,Monitor Service,"feat: Complete log import pipeline integration with healthcheck service ",4
+2025-10-22,Monitor Service,"feat: Consolidate CI workflows with single 'make ci-ready' target ",4
+2025-10-22,Monitor Service,"feat: Implement comprehensive type safety and PKI integration ",4
+2025-10-22,Monitor Service,"feat: Implement time-series optimized database schema for PKI integration ",4
+2025-10-22,Monitor Service,"fix: Remove file-modifying hooks from pre-commit ",1.5
+2025-10-22,Monitor Service,"fix: Remove pre-commit hooks entirely ",1.5
+2025-10-22,Monitor Service,"test: Quick commit test ",1.5
+2025-10-22,Nebula Healthcheck Service,"chore: remove compiled binary and update .gitignore ",1
+2025-10-22,Nebula Healthcheck Service,"feat: normalize database schema and implement device telemetry separation ",4
+2025-10-23,Monitor Service,"Fix Docker container startup: Add PYTHONPATH and use proper module syntax ",2
+2025-10-23,Monitor Service,"Fix linting: Remove unnecessary f-string and fix line length ",2
+2025-10-23,Monitor Service,"Fix mypy type checking errors ",2
+2025-10-23,Monitor Service,"Major refactor: Implement database-driven configuration and fix healthcheck API integration ",2.5
+2025-10-23,Monitor Service,"Make Keycloak client credentials optional - use healthcheck service for endpoint data ",2
+2025-10-23,Monitor Service,"Refactor PKIClient to HealthcheckClient and fix type annotations ",2
+2025-10-24,Monitor Service,"feat: Environment-based configuration for monitor service ",4
+2025-10-24,Monitor Service,"Fix response format: change 'logs' key to 'events' key in API response parsing ",2.5
+2025-10-24,Monitor Service,"fix: correct healthcheck API endpoint and cleanup ",1.5
+2025-10-29,Monitor Service,"Fix lint error (E402) by moving import to top; ignore generated directories ",2
+2025-10-29,Monitor Service,"fix(gui): resolve mypy errors in statistics; device_queries; and routes; chore(make): ensure venv ac",1.5
+2025-10-29,Monitor Service,"init frontend ",3
+2025-10-29,Nebula Healthcheck Service,"chore(routes): normalize formatting for status cache admin handlers ",2.5
+2025-10-29,Nebula Healthcheck Service,"feat(status): cache-first /status via feature flag; background refresher + docs update ",4
+2025-10-29,Nebula Healthcheck Service,"feat(status): runtime toggle endpoints; no env required to enable cache (Start/Stop) ",4
+2025-10-30,Nebula Healthcheck Service,"chore(logs): broaden default logs window to 24h in download script; docs: add findings; feat(status)",4
+2025-10-31,Monitor Service,"docs: update README with timestamp for CI trigger ",0.5
+2025-10-31,Monitor Service,"poller: minimize overlap to reduce duplicates (no schema change)  - default lookback_buffer_minutes=",2

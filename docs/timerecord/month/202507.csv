@@ -1,0 +1,13 @@
+Datum,Repository,Commit Message,Stunden
+2025-07-04,Nebula VPN PKI,"add CORS middleware ",2
+2025-07-07,Nebula VPN PKI,"fix field name mismatch for the Device model ",2
+2025-07-07,Nebula VPN PKI,"Update cert-sign.sh to use dynamic IP variables for lighthouse and relay configurations ",3
+2025-07-07,Nebula VPN PKI,"use an env var for the CA DECRYPT secret ",2
+2025-07-11,Nebula VPN PKI,"get_jwk_from_keycloak ",2
+2025-07-11,Nebula VPN PKI,"require_admin and require_user ",2
+2025-07-14,Nebula VPN PKI,"token signature fixed ",2
+2025-07-17,Nebula Healthcheck Service,"Merge branch 'go-dashboard' ",2
+2025-07-17,VPN Dashboard,"Initial commit: Transfer code from global-dashboard repository ",2
+2025-07-18,Monitor Service,"🚀 Initial commit: Complete programmable documentation system ",0.5
+2025-07-24,Monitor Service,"Root und Graylog-Altlasten entfernt ",2
+2025-07-25,Monitor Service,"Initial commit: extracted monitor-service from nebula-vpn-pki ",2

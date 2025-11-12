@@ -1,0 +1,11 @@
+Datum,Repository,Commit Message,Stunden
+2025-06-02,Nebula VPN PKI,"Add 'architecture' to VPN endpoint response ",2
+2025-06-22,Nebula VPN PKI,"user_devices ",2
+2025-06-26,Nebula VPN PKI,"environment preparation with wrapper ",2
+2025-06-27,Nebula VPN PKI,"Update PKI routes; Alembic sync; new auth module and minor fixes ",2
+2025-06-29,Nebula VPN PKI,"Refactor authentication and admin user handling; update routes and templates ",1
+2025-06-29,Nebula VPN PKI,"Remove .vscode/settings.json and update .gitignore ",1
+2025-06-30,Nebula VPN PKI,"add a short alembic guide ",2
+2025-06-30,Nebula VPN PKI,"Add alembic revision ",2
+2025-06-30,Nebula VPN PKI,"bug fixed: email was missing route /vpn/endpoints/user ",1.5
+2025-07-01,Nebula VPN PKI,"Fix: assign device using email from cert request and improve admin checks ",2
